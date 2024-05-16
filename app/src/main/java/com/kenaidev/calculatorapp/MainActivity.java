@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (binding.edtFirstNumber.getText().toString().isEmpty() || binding.edtSecondNumber.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Preencha os campos.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.string_toast_fill_all_fields, Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.btn_plus) {
 
             numeroUm = Integer.parseInt(binding.edtFirstNumber.getText().toString());
@@ -53,6 +53,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             int resultado = numeroUm + numeroDois;
 
             binding.txtResult.setText(String.valueOf(resultado));
+
+            binding.edtFirstNumber.setText("");
+            binding.edtSecondNumber.setText("");
+
+            Toast.makeText(this, R.string.string_toast_success_stored, Toast.LENGTH_SHORT).show();
 
         } else if (view.getId() == R.id.btn_minus) {
 
@@ -63,6 +68,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             binding.txtResult.setText(String.valueOf(resultado));
 
+            binding.edtFirstNumber.setText("");
+            binding.edtSecondNumber.setText("");
+
+            Toast.makeText(this, R.string.string_toast_success_stored, Toast.LENGTH_SHORT).show();
+
+
         } else if (view.getId() == R.id.btn_division) {
 
             numeroUm = Integer.parseInt(binding.edtFirstNumber.getText().toString());
@@ -72,8 +83,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int resultado = numeroUm / numeroDois;
                 binding.txtResult.setText(String.valueOf(resultado));
 
+                binding.edtFirstNumber.setText("");
+                binding.edtSecondNumber.setText("");
+
+                Toast.makeText(this, R.string.string_toast_success_stored, Toast.LENGTH_SHORT).show();
+
+
             } else {
-                Toast.makeText(this, "Não é possível dividir por 0.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.string_toast_divided_by_zero, Toast.LENGTH_SHORT).show();
             }
 
         } else if (view.getId() == R.id.btn_times) {
@@ -84,6 +101,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             int resultado = numeroUm * numeroDois;
 
             binding.txtResult.setText(String.valueOf(resultado));
+
+            binding.edtFirstNumber.setText("");
+            binding.edtSecondNumber.setText("");
+
+            Toast.makeText(this, R.string.string_toast_success_stored, Toast.LENGTH_SHORT).show();
+
         }
     }
 }
