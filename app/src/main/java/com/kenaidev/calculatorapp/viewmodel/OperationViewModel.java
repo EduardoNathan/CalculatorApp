@@ -1,16 +1,15 @@
-package com.kenaidev.calculatorapp;
-
-import android.widget.Toast;
+package com.kenaidev.calculatorapp.viewmodel;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.kenaidev.calculatorapp.model.Operations;
 import com.kenaidev.calculatorapp.model.Calculate;
 
 public class OperationViewModel extends ViewModel {
 
-    MutableLiveData<Double> resultLiveData = new MutableLiveData<>();
-    MutableLiveData<Throwable> errorLiveData = new MutableLiveData<>();
+    public MutableLiveData<Double> resultLiveData = new MutableLiveData<>();
+    public MutableLiveData<Throwable> errorLiveData = new MutableLiveData<>();
 
     private Calculate calculate = new Calculate();
 

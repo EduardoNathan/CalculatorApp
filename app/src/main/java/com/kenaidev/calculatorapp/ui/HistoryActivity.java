@@ -1,9 +1,11 @@
-package com.kenaidev.calculatorapp;
+package com.kenaidev.calculatorapp.ui;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
+import com.kenaidev.calculatorapp.R;
 import com.kenaidev.calculatorapp.databinding.ActivityHistoryBinding;
 
 public class HistoryActivity extends AppCompatActivity {

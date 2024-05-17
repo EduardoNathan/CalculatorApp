@@ -1,4 +1,4 @@
-package com.kenaidev.calculatorapp;
+package com.kenaidev.calculatorapp.ui;
 
 import android.content.Intent;
 
@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.kenaidev.calculatorapp.viewmodel.OperationViewModel;
+import com.kenaidev.calculatorapp.model.Operations;
+import com.kenaidev.calculatorapp.R;
 import com.kenaidev.calculatorapp.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -20,13 +23,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private OperationViewModel viewModel;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
 
         viewModel = new ViewModelProvider(this).get(OperationViewModel.class);
         viewModel.resultLiveData.observe(this, new Observer<Double>() {
