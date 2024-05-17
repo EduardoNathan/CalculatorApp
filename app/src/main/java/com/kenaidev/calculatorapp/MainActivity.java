@@ -1,6 +1,7 @@
 package com.kenaidev.calculatorapp;
 
 import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.View;
 
@@ -8,14 +9,17 @@ import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.kenaidev.calculatorapp.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    int numeroUm, numeroDois;
-
     private ActivityMainBinding binding;
+
+    private OperationViewModel viewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,89 +28,78 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         View view = binding.getRoot();
         setContentView(view);
 
+        viewModel = new ViewModelProvider(this).get(OperationViewModel.class);
+        viewModel.resultLiveData.observe(this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double result) {
+                binding.txtResult.setText(String.valueOf(result));
+                cleanFields();
+                Toast.makeText(MainActivity.this, R.string.string_toast_success_stored,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        viewModel.errorLiveData.observe(this, new Observer<Throwable>() {
+            @Override
+            public void onChanged(Throwable throwable) {
+                Toast.makeText(MainActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         binding.btnPlus.setOnClickListener(this);
         binding.btnMinus.setOnClickListener(this);
         binding.btnDivision.setOnClickListener(this);
         binding.btnTimes.setOnClickListener(this);
 
-        binding.btnOpen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        binding.btnOpen.setOnClickListener(v -> {
 
-                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+            startActivity(intent);
 
-            }
         });
-
     }
 
     @Override
     public void onClick(View view) {
-        if (binding.edtFirstNumber.getText().toString().isEmpty() || binding.edtSecondNumber.getText().toString().isEmpty()) {
-            Toast.makeText(this, R.string.string_toast_fill_all_fields, Toast.LENGTH_SHORT).show();
-        } else if (view.getId() == R.id.btn_plus) {
 
-            numeroUm = Integer.parseInt(binding.edtFirstNumber.getText().toString());
-            numeroDois = Integer.parseInt(binding.edtSecondNumber.getText().toString());
+        if (view.getId() == R.id.btn_plus) {
 
-            int resultado = numeroUm + numeroDois;
-
-            binding.txtResult.setText(String.valueOf(resultado));
-
-            binding.edtFirstNumber.setText("");
-            binding.edtSecondNumber.setText("");
-
-            Toast.makeText(this, R.string.string_toast_success_stored, Toast.LENGTH_SHORT).show();
+            viewModel.handleOperation(
+                    binding.edtFirstNumber.getText().toString(),
+                    binding.edtSecondNumber.getText().toString(),
+                    Operations.ADICAO
+            );
 
         } else if (view.getId() == R.id.btn_minus) {
 
-            numeroUm = Integer.parseInt(binding.edtFirstNumber.getText().toString());
-            numeroDois = Integer.parseInt(binding.edtSecondNumber.getText().toString());
-
-            int resultado = numeroUm - numeroDois;
-
-            binding.txtResult.setText(String.valueOf(resultado));
-
-            binding.edtFirstNumber.setText("");
-            binding.edtSecondNumber.setText("");
-
-            Toast.makeText(this, R.string.string_toast_success_stored, Toast.LENGTH_SHORT).show();
+            viewModel.handleOperation(
+                    binding.edtFirstNumber.getText().toString(),
+                    binding.edtSecondNumber.getText().toString(),
+                    Operations.SUBTRACAO
+            );
 
 
         } else if (view.getId() == R.id.btn_division) {
 
-            numeroUm = Integer.parseInt(binding.edtFirstNumber.getText().toString());
-            numeroDois = Integer.parseInt(binding.edtSecondNumber.getText().toString());
-
-            if (numeroDois != 0) {
-                int resultado = numeroUm / numeroDois;
-                binding.txtResult.setText(String.valueOf(resultado));
-
-                binding.edtFirstNumber.setText("");
-                binding.edtSecondNumber.setText("");
-
-                Toast.makeText(this, R.string.string_toast_success_stored, Toast.LENGTH_SHORT).show();
-
-
-            } else {
-                Toast.makeText(this, R.string.string_toast_divided_by_zero, Toast.LENGTH_SHORT).show();
-            }
+            viewModel.handleOperation(
+                    binding.edtFirstNumber.getText().toString(),
+                    binding.edtSecondNumber.getText().toString(),
+                    Operations.DIVISAO
+            );
 
         } else if (view.getId() == R.id.btn_times) {
 
-            numeroUm = Integer.parseInt(binding.edtFirstNumber.getText().toString());
-            numeroDois = Integer.parseInt(binding.edtSecondNumber.getText().toString());
-
-            int resultado = numeroUm * numeroDois;
-
-            binding.txtResult.setText(String.valueOf(resultado));
-
-            binding.edtFirstNumber.setText("");
-            binding.edtSecondNumber.setText("");
-
-            Toast.makeText(this, R.string.string_toast_success_stored, Toast.LENGTH_SHORT).show();
+            viewModel.handleOperation(
+                    binding.edtFirstNumber.getText().toString(),
+                    binding.edtSecondNumber.getText().toString(),
+                    Operations.MULTIPLICACAO
+            );
 
         }
+    }
+
+    private void cleanFields() {
+        binding.edtFirstNumber.setText("");
+        binding.edtSecondNumber.setText("");
     }
 }
