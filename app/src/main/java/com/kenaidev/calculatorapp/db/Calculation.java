@@ -10,16 +10,19 @@ public class Calculation {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    @ColumnInfo(name = "valor_a")
-    public double valorA;
+    @ColumnInfo(name = "value_a")
+    public double valueA;
 
-    @ColumnInfo(name = "valor_b")
-    public double valorB;
+    @ColumnInfo(name = "value_b")
+    public double valueB;
 
-    @ColumnInfo(name = "operacao")
-    public String operacao;
+    @ColumnInfo(name = "operation")
+    public String operation;
 
-    @ColumnInfo(name = "data_hora")
-    public String dataHora;
+    @ColumnInfo(name = "result")
+    public double result;
+
+    @ColumnInfo(name = "date_hour")
+    public String dateHour;
 
 }

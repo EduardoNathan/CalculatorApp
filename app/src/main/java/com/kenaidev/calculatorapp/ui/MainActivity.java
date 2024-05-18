@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 cleanFields();
                 Toast.makeText(MainActivity.this, R.string.string_toast_success_stored,
                         Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             viewModel.handleOperation(
                     binding.edtFirstNumber.getText().toString(),
                     binding.edtSecondNumber.getText().toString(),
-                    Operations.ADICAO
+                    Operations.SUM
             );
 
         } else if (view.getId() == R.id.btn_minus) {
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             viewModel.handleOperation(
                     binding.edtFirstNumber.getText().toString(),
                     binding.edtSecondNumber.getText().toString(),
-                    Operations.SUBTRACAO
+                    Operations.SUBTRACTION
             );
 
 
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             viewModel.handleOperation(
                     binding.edtFirstNumber.getText().toString(),
                     binding.edtSecondNumber.getText().toString(),
-                    Operations.DIVISAO
+                    Operations.DIVISION
             );
 
         } else if (view.getId() == R.id.btn_times) {
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             viewModel.handleOperation(
                     binding.edtFirstNumber.getText().toString(),
                     binding.edtSecondNumber.getText().toString(),
-                    Operations.MULTIPLICACAO
+                    Operations.MULTIPLICATION
             );
 
         }
