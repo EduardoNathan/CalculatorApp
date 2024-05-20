@@ -11,5 +11,16 @@
     <string name="string_toast_success_stored">Cálculo armazenado com sucesso.</string>
     <string name="string_toast_divided_by_zero">Não é possível dividir por 0.</string>
     <string name="string_toast_fill_all_fields">Preencha os campos.</string>
+    <string name="string_date">Data:</string>
+    <string name="string_date_format">00/00/0000</string>
+    <string name="string_result_holder">00</string>
+    <string name="string_calc_result">Resultado:</string>
+    <string name="string_second_value_holder">00</string>
+    <string name="string_first_value_holder">00</string>
+    <string name="string_second_value_field">Valor 2:</string>
+    <string name="string_operation">+</string>
+    <string name="string_first_value_field">Valor 1:</string>
+    <string name="string_id_holder">00</string>
+    <string name="string_id_field">id:</string>
 
 </resources>

@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:text="id: "
+            android:text="@string/string_id_field"
             android:textSize="14sp" />
 
         <TextView
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:text="00"
+            android:text="@string/string_id_holder"
             android:textSize="14sp" />
 
     </LinearLayout>
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:text="Valor 1: "
+            android:text="@string/string_first_value_field"
             android:textSize="14sp" />
 
         <TextView
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:text="00"
+            android:text="@string/string_first_value_holder"
             android:textSize="14sp" />
 
         <TextView
@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:text="+"
+            android:text="@string/string_operation"
             android:textSize="14sp" />
 
         <TextView
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:text="Valor 2: "
+            android:text="@string/string_second_value_field"
             android:textSize="14sp" />
 
         <TextView
@@ -70,15 +70,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:text="00"
+            android:text="@string/string_second_value_holder"
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/txt_resultad_field"
+            android:id="@+id/txt_result_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:text="Resultado: "
+            android:text="@string/string_calc_result"
             android:textSize="14sp" />
 
         <TextView
@@ -86,8 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:text="00"
-            android:layout_weight="1"
+            android:text="@string/string_result_holder"
             android:textSize="14sp" />
 
     </LinearLayout>
@@ -102,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:text="Data:"
+            android:text="@string/string_date"
             android:textSize="14sp" />
 
         <TextView
@@ -110,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:text="00/00/0000"
+            android:text="@string/string_date_format"
             android:textSize="14sp" />
 
     </LinearLayout>
