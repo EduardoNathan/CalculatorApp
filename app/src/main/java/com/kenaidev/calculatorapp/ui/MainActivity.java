@@ -17,7 +17,7 @@ import com.kenaidev.calculatorapp.model.Operations;
 import com.kenaidev.calculatorapp.R;
 import com.kenaidev.calculatorapp.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
 
@@ -50,56 +50,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        binding.btnPlus.setOnClickListener(this);
-        binding.btnMinus.setOnClickListener(this);
-        binding.btnDivision.setOnClickListener(this);
-        binding.btnTimes.setOnClickListener(this);
-
         binding.btnOpen.setOnClickListener(v -> {
 
             Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
             startActivity(intent);
 
         });
-    }
 
-    @Override
-    public void onClick(View view) {
+        binding.btnPlus.setOnClickListener(v -> viewModel.handleOperation(
+                binding.edtFirstNumber.getText().toString(),
+                binding.edtSecondNumber.getText().toString(),
+                Operations.SUM
+        ));
 
-        if (view.getId() == R.id.btn_plus) {
+        binding.btnMinus.setOnClickListener(v -> viewModel.handleOperation(
+                binding.edtFirstNumber.getText().toString(),
+                binding.edtSecondNumber.getText().toString(),
+                Operations.SUB
+        ));
 
-            viewModel.handleOperation(
-                    binding.edtFirstNumber.getText().toString(),
-                    binding.edtSecondNumber.getText().toString(),
-                    Operations.SUM
-            );
+        binding.btnDivision.setOnClickListener(v -> viewModel.handleOperation(
+                binding.edtFirstNumber.getText().toString(),
+                binding.edtSecondNumber.getText().toString(),
+                Operations.DIV
+        ));
 
-        } else if (view.getId() == R.id.btn_minus) {
+        binding.btnTimes.setOnClickListener(v -> viewModel.handleOperation(
+                binding.edtFirstNumber.getText().toString(),
+                binding.edtSecondNumber.getText().toString(),
+                Operations.MULTI
+        ));
 
-            viewModel.handleOperation(
-                    binding.edtFirstNumber.getText().toString(),
-                    binding.edtSecondNumber.getText().toString(),
-                    Operations.SUBTRACTION
-            );
-
-
-        } else if (view.getId() == R.id.btn_division) {
-
-            viewModel.handleOperation(
-                    binding.edtFirstNumber.getText().toString(),
-                    binding.edtSecondNumber.getText().toString(),
-                    Operations.DIVISION
-            );
-
-        } else if (view.getId() == R.id.btn_times) {
-
-            viewModel.handleOperation(
-                    binding.edtFirstNumber.getText().toString(),
-                    binding.edtSecondNumber.getText().toString(),
-                    Operations.MULTIPLICATION
-            );
-
-        }
     }
 
     private void cleanFields() {

@@ -38,7 +38,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
         holder.tvId.setText(String.valueOf(calculation.id));
         holder.tvFirstValue.setText(String.valueOf(calculation.valueA));
-        holder.tvSecondValue.setText(String.valueOf(calculation.valueA));
+        holder.tvSecondValue.setText(String.valueOf(calculation.valueB));
         holder.tvOperation.setText(String.valueOf(calculation.operation));
         holder.tvDateHour.setText(String.valueOf(calculation.dateHour));
         holder.tvResult.setText(String.valueOf(calculation.result));

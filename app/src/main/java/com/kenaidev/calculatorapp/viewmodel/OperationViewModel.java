@@ -52,11 +52,11 @@ public class OperationViewModel extends AndroidViewModel {
                 resultOperation = calculate.sum(firstNumber, secondNumber);
                 resultLiveData.postValue(resultOperation);
                 break;
-            case SUBTRACTION:
+            case SUB:
                 resultOperation = calculate.subtraction(firstNumber, secondNumber);
                 resultLiveData.postValue(resultOperation);
                 break;
-            case DIVISION:
+            case DIV:
                 if (secondNumber != 0) {
                     resultOperation = calculate.division(firstNumber, secondNumber);
                     resultLiveData.postValue(resultOperation);
@@ -66,7 +66,7 @@ public class OperationViewModel extends AndroidViewModel {
                 }
 
                 break;
-            case MULTIPLICATION:
+            case MULTI:
                 resultOperation = calculate.multiplication(firstNumber, secondNumber);
                 resultLiveData.postValue(resultOperation);
                 break;
